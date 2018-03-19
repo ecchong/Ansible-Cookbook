@@ -1,0 +1,1 @@
+## Sometime REST API needs to be authenticated first and proceed with a token.  This example will show how to retrieve the token and POST to REST API.
