@@ -35,4 +35,23 @@ groups:482
 groups.name:mygroup
 ```
 
+### Find hosts that failed the last job
+```bash
+has_active_failures:true
+```
+### Find hosts by name
+```bash
+name.startswith:dev
+name.exact:devhost4
+name.istartwith:dev
+name.endswith:4
+name.regex:^dev.*4$
+```
+
+### Find dev hosts that are marked as 'd' on the 6th characters
+```bash
+name.regex:^.{5}d
+```
+
+
 ### No space in any search string.
