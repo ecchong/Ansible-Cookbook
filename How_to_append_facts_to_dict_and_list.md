@@ -9,6 +9,12 @@ For example, we want to store dictionary user information into a list accounts
     set_fact:
       account: "{{ {} | combine( {'name':'john', 'phone':'123-123-1234'}) }}"
 
+  - name: Another way to create new dict
+    set_fact:
+      account:
+        name: john
+        phone: 123-123-1234
+
   - name: Add some more info
     set_fact:
       account: "{{ account | default ({}) | combine( {'gender':'male', 'age':'55'}) }}"
@@ -46,4 +52,15 @@ ok: [localhost] => {
         }
     ]
 }
+```
+
+Easy way
+```yaml
+  - set_fact:
+      some_list_of_dicts: "{{ _cur_value +  [ item ] }}"
+    loop:
+      - { a: 1, b: 2 }
+      - { x: 1, y: 2 }
+    vars:
+      _cur_value: "{{ some_list_of_dicts | default([]) }}"
 ```
