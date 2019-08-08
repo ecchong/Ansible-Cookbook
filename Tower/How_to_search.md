@@ -11,6 +11,11 @@ enabled:false
 variables.icontains:myvar
 ```
 
+### Use as host filter on tower-cli
+```bash
+tower-cli host list --host-filter 'variables__icontains=application'
+```
+
 ### Find hosts with ansible facts equal a value
 ```bash
 ansible_facts.ansible_os_family:RedHat
@@ -46,6 +51,14 @@ name.exact:devhost4
 name.istartwith:dev
 name.endswith:4
 name.regex:^dev.*4$
+```
+
+### Using the host filter on tower-cli
+```bash
+tower-cli host list --host-filter name__endswith=80 -vvv
+tower-cli host list --host-filter name__startswith=RN
+tower-cli host list --host-filter 'name__regex=fedora[0-9]'
+tower-cli host list --host-filter 'name__startswith=RN and name__regex=01$'
 ```
 
 ### Find dev hosts that are marked as 'd' on the 6th characters
