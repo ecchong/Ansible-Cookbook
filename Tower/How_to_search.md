@@ -66,5 +66,14 @@ tower-cli host list --host-filter 'name__startswith=RN and name__regex=01$'
 name.regex:^.{5}d
 ```
 
+### Find a template ID by name using curl
+```bash
+curl -k -u john:secret https://192.168.0.101/api/v2/job_templates/?name='My Template' | python3 -c 'import json,sys; print (json.load(sys.stdin)["results"][0]["id"])'
+```
+
+### Find a template ID by name using tower-cli
+```bash
+tower-cli job_template list --name 'Rolling Test' --format id
+```
 
 ### No space in any search string.
