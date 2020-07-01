@@ -27,3 +27,14 @@
     bar: 'byebye'
     x: "{{ 'foo' if ansible_distribution_major_version == '7' else 'bar' }}"
 ```
+
+4. If-then-else
+```yaml
+  vars:
+    test: this is a test environment
+    uat: this is a uat environment
+    prod: this isa prod environment
+  tasks:
+  - set_facts:
+      env_vars:  "{{ test if ( env == 'test' ) else uat if ( env == 'uat' ) else prod if ( env == 'prod' ) }}"
+```
